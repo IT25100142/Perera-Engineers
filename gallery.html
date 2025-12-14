@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Perera Engineers</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#0f3c66',
+                        'brand-dark': '#1a1a1a',
+                        'brand-gray': '#f4f6f8',
+                        'brand-accent': '#ff6b00',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Bar -->
+    <div class="bg-brand-dark text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span><i class="fas fa-certificate text-brand-accent mr-2"></i>Specialist of CNC & Lathe Works</span>
+                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i>Panadura, Sri Lanka</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="mailto:perera.engineers@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-2"></i>perera.engineers@gmail.com</a>
+                <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2 text-brand-blue">
+                    <div class="h-16 w-auto overflow-hidden">
+                        <!-- Applied filters -->
+                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                    <a href="index.html" class="hover:text-brand-accent transition">Home</a>
+                    <a href="contact.html#about" class="hover:text-brand-accent transition">About</a>
+                    <a href="index.html#services" class="hover:text-brand-accent transition">Services</a>
+                    <a href="gallery.html" class="text-brand-accent">Gallery</a>
+                    <a href="contact.html#contact" class="px-5 py-2 btn-primary rounded-md font-semibold text-white">Contact Us</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="bg-white border-t md:hidden">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="index.html" class="text-brand-accent font-medium">Home</a>
+                <a href="contact.html#about" class="text-gray-700 hover:text-brand-accent font-medium">About</a>
+                <a href="index.html#services" class="text-gray-700 hover:text-brand-accent font-medium">Services</a>
+                <a href="gallery.html" class="text-brand-accent font-medium">Gallery</a>
+                <a href="contact.html#contact" class="text-brand-accent font-bold">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white flex-grow">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-brand-blue">Project Portfolio</h1>
+                <div class="w-20 h-1 bg-brand-accent mx-auto mt-4 mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our diverse range of precision molded parts and tooling solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 1" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">Plastic Moulds</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1622676008693-0199d3d34b3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 2" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">Rubber Moulds</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1580983218765-f663bec07b37?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 3" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">Blow Moulds</span>
+                    </div>
+                </div>
+                 <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1605317760773-4b6848037a54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 4" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">CNC Parts</span>
+                    </div>
+                </div>
+                 <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 5" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">Lathe Works</span>
+                    </div>
+                </div>
+                 <div class="group relative overflow-hidden rounded-lg cursor-pointer h-64">
+                    <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mould 6" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold text-lg border-2 border-brand-accent px-4 py-2">Finished Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 text-white mb-4">
+                        <!-- Logo wrapper -->
+                         <div class="h-10 w-auto overflow-hidden bg-white rounded p-1">
+                             <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="contact.html#about" class="hover:text-brand-accent transition">About Us</a></li>
+                        <li><a href="index.html#services" class="hover:text-brand-accent transition">Services</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a></li>
+                        <li><a href="contact.html#contact" class="hover:text-brand-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
+                        <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
+                        <li><i class="fas fa-envelope mr-2 text-brand-accent"></i>perera.engineers@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Subscribe for industry updates.</p>
+                    <form class="flex" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md w-full outline-none focus:ring-1 focus:ring-brand-accent">
+                        <button class="bg-brand-accent px-4 py-2 rounded-r-md hover:bg-orange-600 transition"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 Perera Engineers. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
