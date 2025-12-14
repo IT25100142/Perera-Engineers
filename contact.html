@@ -39,7 +39,6 @@
                 <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i>Panadura, Sri Lanka</span>
             </div>
             <div class="flex space-x-6">
-                <a href="mailto:perera.engineers@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-2"></i>perera.engineers@gmail.com</a>
                 <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
             </div>
         </div>
@@ -59,10 +58,14 @@
 
                 <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
                     <a href="index.html" class="hover:text-brand-accent transition">Home</a>
-                    <a href="contact.html#about" class="text-brand-accent">About</a>
                     <a href="index.html#services" class="hover:text-brand-accent transition">Services</a>
-                    <a href="gallery.html" class="hover:text-brand-accent transition">Gallery</a>
-                    <a href="contact.html#contact" class="px-5 py-2 btn-primary rounded-md font-semibold text-white">Contact Us</a>
+                    <!-- Renamed to Portfolio -->
+                    <a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a>
+                    
+                    <!-- Combined Creative Button -->
+                    <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i> About & Contact
+                    </a>
                 </div>
 
                 <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
@@ -74,10 +77,9 @@
         <div id="mobile-menu" class="bg-white border-t md:hidden">
             <div class="flex flex-col px-6 py-4 space-y-4">
                 <a href="index.html" class="text-brand-accent font-medium">Home</a>
-                <a href="contact.html#about" class="text-gray-700 hover:text-brand-accent font-medium">About</a>
                 <a href="index.html#services" class="text-gray-700 hover:text-brand-accent font-medium">Services</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium">Gallery</a>
-                <a href="contact.html#contact" class="text-brand-accent font-bold">Contact Us</a>
+                <a href="gallery.html" class="text-brand-accent font-medium">Portfolio</a>
+                <a href="contact.html" class="text-brand-accent font-bold">About & Contact</a>
             </div>
         </div>
     </nav>
@@ -132,10 +134,11 @@
             <div class="bg-white rounded-xl shadow-2xl overflow-hidden p-10 text-center">
                 <h3 class="text-3xl font-bold mb-6 text-brand-blue">Contact Perera Engineers</h3>
                 <p class="text-gray-600 mb-10 max-w-2xl mx-auto">
-                    We are ready to assist you with your mould manufacturing needs. Visit us or contact us via phone or email.
+                    We are ready to assist you with your mould manufacturing needs. Visit us or contact us via phone.
                 </p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- 2 Column Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
                     <div class="flex flex-col items-center p-6 bg-brand-gray rounded-lg">
                         <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white mb-4 text-xl">
                              <i class="fas fa-map-marker-alt"></i>
@@ -152,14 +155,6 @@
                         <p class="text-sm text-gray-600">Office: +94 382248333</p>
                         <p class="text-sm text-gray-600 mb-4">Mobile: +94 777 644464</p>
                         <a href="tel:+94777644464" class="px-6 py-2 bg-brand-blue text-white rounded-full font-semibold hover:bg-blue-900 transition shadow-md w-full">Call Now</a>
-                    </div>
-
-                    <div class="flex flex-col items-center p-6 bg-brand-gray rounded-lg">
-                        <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white mb-4 text-xl">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4 class="font-bold text-lg mb-2">Email</h4>
-                        <p class="text-sm text-gray-600 break-all">perera.engineers@gmail.com</p>
                     </div>
                 </div>
 
@@ -191,7 +186,7 @@
     <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div>
                     <div class="flex items-center space-x-2 text-white mb-4">
                         <!-- Logo wrapper -->
@@ -207,10 +202,9 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Quick Links</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html#about" class="hover:text-brand-accent transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-accent transition">About & Contact</a></li>
                         <li><a href="index.html#services" class="hover:text-brand-accent transition">Services</a></li>
                         <li><a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a></li>
-                        <li><a href="contact.html#contact" class="hover:text-brand-accent transition">Contact</a></li>
                     </ul>
                 </div>
 
@@ -219,18 +213,8 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
                         <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
-                        <li><i class="fas fa-envelope mr-2 text-brand-accent"></i>perera.engineers@gmail.com</li>
                         <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
                     </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Newsletter</h4>
-                    <p class="text-gray-400 text-sm mb-4">Subscribe for industry updates.</p>
-                    <form class="flex" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md w-full outline-none focus:ring-1 focus:ring-brand-accent">
-                        <button class="bg-brand-accent px-4 py-2 rounded-r-md hover:bg-orange-600 transition"><i class="fas fa-paper-plane"></i></button>
-                    </form>
                 </div>
             </div>
 
