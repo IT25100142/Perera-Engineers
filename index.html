@@ -71,7 +71,6 @@
                 <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i>Panadura, Sri Lanka</span>
             </div>
             <div class="flex space-x-6">
-                <a href="mailto:perera.engineers@gmail.com" class="hover:text-white transition"><i class="fas fa-envelope mr-2"></i>perera.engineers@gmail.com</a>
                 <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
             </div>
         </div>
@@ -91,10 +90,14 @@
 
                 <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
                     <a href="index.html" class="text-brand-accent">Home</a>
-                    <a href="contact.html#about" class="hover:text-brand-accent transition">About</a>
                     <a href="index.html#services" class="hover:text-brand-accent transition">Services</a>
-                    <a href="gallery.html" class="hover:text-brand-accent transition">Gallery</a>
-                    <a href="contact.html#contact" class="px-5 py-2 btn-primary rounded-md font-semibold text-white">Contact Us</a>
+                    <!-- Renamed to Portfolio -->
+                    <a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a>
+                    
+                    <!-- Combined Creative Button -->
+                    <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i> About & Contact
+                    </a>
                 </div>
 
                 <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
@@ -107,10 +110,9 @@
         <div id="mobile-menu" class="bg-white border-t md:hidden">
             <div class="flex flex-col px-6 py-4 space-y-4">
                 <a href="index.html" class="text-brand-accent font-medium">Home</a>
-                <a href="contact.html#about" class="text-gray-700 hover:text-brand-accent font-medium">About</a>
                 <a href="index.html#services" class="text-gray-700 hover:text-brand-accent font-medium">Services</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium">Gallery</a>
-                <a href="contact.html#contact" class="text-brand-accent font-bold">Contact Us</a>
+                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium">Portfolio</a>
+                <a href="contact.html" class="text-brand-accent font-bold">About & Contact</a>
             </div>
         </div>
     </nav>
@@ -129,7 +131,7 @@
                     We specialize in CNC & Lathe works, delivering high-quality custom moulds for industrial and consumer applications.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="contact.html#contact" class="px-8 py-4 btn-primary rounded text-center font-bold text-lg shadow-lg">Start Your Project</a>
+                    <a href="contact.html" class="px-8 py-4 btn-primary rounded text-center font-bold text-lg shadow-lg">Start Your Project</a>
                     <a href="index.html#services" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded text-center font-bold text-lg hover:bg-white hover:text-brand-blue transition">Explore Services</a>
                 </div>
             </div>
@@ -203,42 +205,55 @@
     </section>
 
     <!-- 3D Model Section -->
-    <section id="interactive-model" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
+    <section id="interactive-model" class="py-24 model-showcase-bg">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2">
-                     <span class="text-brand-accent font-bold uppercase tracking-wider text-sm">Interactive Preview</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mt-2 mb-4">Explore Our Precision</h2>
-                    <p class="text-gray-600 mb-6">
-                        Interact with our sample 3D model to see the level of detail we deliver. 
-                        Rotate, zoom, and inspect the part from every angle.
+                     <span class="inline-block px-3 py-1 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-md">Featured Masterpiece</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mt-2 mb-6 leading-tight">
+                        <span class="text-brand-accent">25ml</span> Calin<br>Shampoo Bottle
+                    </h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                        Witness the intersection of design and durability. This precision-molded bottle showcases our capability to handle complex curves and fine details. Interact with the model to see the flawless finish we deliver for consumer products.
                     </p>
-                    <div class="flex space-x-4 text-sm text-gray-500">
-                        <div class="flex items-center"><i class="fas fa-mouse-pointer mr-2"></i>Drag to Rotate</div>
-                        <div class="flex items-center"><i class="fas fa-search-plus mr-2"></i>Scroll to Zoom</div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="gallery.html" class="px-8 py-3 btn-glow rounded-full font-bold text-lg text-center flex items-center justify-center gap-3">
+                            <span>Explore Full Portfolio</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex space-x-6 text-sm text-gray-500 border-t border-gray-300 pt-6">
+                        <div class="flex items-center"><i class="fas fa-hand-pointer mr-2 text-brand-accent"></i>Drag to Rotate</div>
+                        <div class="flex items-center"><i class="fas fa-search-plus mr-2 text-brand-accent"></i>Scroll to Zoom</div>
                     </div>
                 </div>
-                <div class="md:w-1/2 w-full h-[400px] bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative shadow-inner">
-                    <!-- 3D Model Viewer -->
-                    <!-- 
-                        IMPORTANT FOR GITHUB REPOSITORY / PAGES:
-                        1. Ensure 'Unnamed-_25ml_Calin_Shampoo_bottle.gltf' AND 'Unnamed-_25ml_Calin_Shampoo_bottle.bin' are in the same folder as this index.html file.
-                        2. The src must be a relative path (just the filename).
-                    -->
+                
+                <div class="md:w-1/2 w-full h-[500px] bg-white rounded-2xl overflow-hidden border border-gray-200 relative shadow-2xl transform hover:scale-[1.02] transition duration-500">
+                    <!-- 3D Model Viewer Optimized for Mobile/PC/Github Pages -->
                     <model-viewer 
                         src="./Unnamed-_25ml_Calin_Shampoo_bottle.gltf" 
                         alt="3D model of Calin Shampoo Bottle" 
                         auto-rotate 
                         camera-controls 
                         ar
+                        ar-modes="webxr scene-viewer quick-look"
                         shadow-intensity="1"
+                        environment-image="neutral"
+                        exposure="1.2"
                         class="w-full h-full"
-                        style="background-color: #f9fafb;">
+                        style="background-color: #ffffff; touch-action: pan-y;">
                         
                         <div class="progress-bar hide" slot="progress-bar">
                             <div class="update-bar"></div>
                         </div>
                     </model-viewer>
+                    
+                    <!-- Badge -->
+                    <div class="absolute top-4 right-4 bg-brand-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        Interactive 3D
+                    </div>
                 </div>
             </div>
         </div>
@@ -247,7 +262,7 @@
     <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div>
                     <div class="flex items-center space-x-2 text-white mb-4">
                         <!-- Logo wrapper -->
@@ -263,10 +278,9 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Quick Links</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html#about" class="hover:text-brand-accent transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-accent transition">About & Contact</a></li>
                         <li><a href="index.html#services" class="hover:text-brand-accent transition">Services</a></li>
                         <li><a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a></li>
-                        <li><a href="contact.html#contact" class="hover:text-brand-accent transition">Contact</a></li>
                     </ul>
                 </div>
 
@@ -275,18 +289,8 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
                         <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
-                        <li><i class="fas fa-envelope mr-2 text-brand-accent"></i>perera.engineers@gmail.com</li>
                         <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
                     </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Newsletter</h4>
-                    <p class="text-gray-400 text-sm mb-4">Subscribe for industry updates.</p>
-                    <form class="flex" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md w-full outline-none focus:ring-1 focus:ring-brand-accent">
-                        <button class="bg-brand-accent px-4 py-2 rounded-r-md hover:bg-orange-600 transition"><i class="fas fa-paper-plane"></i></button>
-                    </form>
                 </div>
             </div>
 
