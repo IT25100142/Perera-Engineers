@@ -45,6 +45,62 @@ body {
     transform: translateY(-1px);
 }
 
+/* Creative Button Style for "About & Contact" */
+.btn-creative {
+    background-image: linear-gradient(to right, #ff6b00 0%, #ff9f43 51%, #ff6b00 100%);
+    background-size: 200% auto;
+    color: white;
+    transition: 0.5s;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-creative:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5);
+}
+
+/* "Go All Out" Styles for 3D Section */
+.model-showcase-bg {
+    background: radial-gradient(circle at center, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.model-showcase-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(15, 60, 102, 0.03) 10px,
+        rgba(15, 60, 102, 0.03) 20px
+    );
+    z-index: 0;
+}
+
+.btn-glow {
+    background-color: #0f3c66;
+    color: white;
+    box-shadow: 0 0 20px rgba(15, 60, 102, 0.4);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-glow:hover {
+    background-color: #164e82;
+    box-shadow: 0 0 30px rgba(15, 60, 102, 0.6);
+    transform: scale(1.05);
+}
+
 /* Mobile Menu Transition */
 #mobile-menu {
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -62,4 +118,5 @@ model-viewer {
     width: 100%;
     height: 100%;
     --poster-color: transparent;
+    touch-action: pan-y; /* Crucial for mobile scrolling over the model */
 }
