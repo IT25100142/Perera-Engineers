@@ -3,7 +3,6 @@ const translations = {
     en: {
         // Navigation
         nav_home: "Home",
-        // nav_services removed
         nav_portfolio: "Portfolio",
         nav_contact: "About & Contact",
         
@@ -48,7 +47,6 @@ const translations = {
     si: {
         // Navigation
         nav_home: "මුල් පිටුව",
-        // nav_services removed
         nav_portfolio: "නිර්මාණ එකතුව",
         nav_contact: "අපි ගැන & අමතන්න",
         
@@ -97,12 +95,10 @@ function updateLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            if (element.innerHTML.includes('<') && element.innerHTML.includes('>')) {
-                 element.innerHTML = translations[lang][key]; 
-            } else {
-                 element.textContent = translations[lang][key];
-            }
+        // Ensure translation exists before applying
+        if (translations[lang] && translations[lang][key]) {
+            // Always use innerHTML to preserve formatting (like <br>)
+            element.innerHTML = translations[lang][key];
         }
     });
     updateButtonStyles(lang);
@@ -143,8 +139,8 @@ function updateButtonStyles(lang) {
     }
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
+// Initialization Function
+function init() {
     // Mobile Menu
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
@@ -173,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- ENHANCED ANIMATION SYSTEM ---
     const observerOptions = {
         threshold: 0.1, 
-        rootMargin: "0px 0px -40px 0px" 
+        rootMargin: "0px 0px -20px 0px" // Slightly adjusted trigger point
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -215,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper to apply classes and observe
     const applyAnimation = (elements, classes) => {
+        if (!elements) return;
         elements.forEach((el, index) => {
             el.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', ...classes);
             
@@ -230,4 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
     applyAnimation(fadeUpElements, ['translate-y-8']);
     applyAnimation(fadeLeftElements, ['-translate-x-8']);
     applyAnimation(fadeRightElements, ['translate-x-8']);
-});
+}
+
+// Safe Loading
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
