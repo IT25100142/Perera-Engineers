@@ -32,7 +32,6 @@
         }
     </script>
     <style>
-        /* Loading indicator for model viewer */
         .progress-bar {
             display: block;
             width: 33%;
@@ -67,8 +66,8 @@
     <div class="bg-brand-dark text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex space-x-6">
-                <span><i class="fas fa-certificate text-brand-accent mr-2"></i>Specialist of CNC & Lathe Works</span>
-                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i>Panadura, Sri Lanka</span>
+                <span><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
+                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
             </div>
             <div class="flex space-x-6">
                 <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
@@ -83,20 +82,23 @@
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-2 text-brand-blue">
                     <div class="h-16 w-auto overflow-hidden">
-                        <!-- Applied filters -->
                         <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
                     </div>
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-                    <a href="index.html" class="text-brand-accent">Home</a>
-                    <a href="index.html#services" class="hover:text-brand-accent transition">Services</a>
-                    <!-- Renamed to Portfolio -->
-                    <a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a>
+                    <a href="index.html" class="text-brand-accent" data-i18n="nav_home">Home</a>
+                    <!-- Services Link Removed -->
+                    <a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a>
                     
-                    <!-- Combined Creative Button -->
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2 bg-gray-100 rounded-full p-1">
+                        <button id="btn-en" class="px-3 py-1 text-xs font-bold rounded-full bg-brand-blue text-white shadow-sm transition">ENG</button>
+                        <button id="btn-si" class="px-3 py-1 text-xs font-medium text-gray-600 hover:text-brand-blue transition">SIN</button>
+                    </div>
+
                     <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
-                        <i class="fas fa-info-circle"></i> About & Contact
+                        <i class="fas fa-info-circle"></i> <span data-i18n="nav_contact">About & Contact</span>
                     </a>
                 </div>
 
@@ -109,10 +111,18 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="bg-white border-t md:hidden">
             <div class="flex flex-col px-6 py-4 space-y-4">
-                <a href="index.html" class="text-brand-accent font-medium">Home</a>
-                <a href="index.html#services" class="text-gray-700 hover:text-brand-accent font-medium">Services</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium">Portfolio</a>
-                <a href="contact.html" class="text-brand-accent font-bold">About & Contact</a>
+                <a href="index.html" class="text-brand-accent font-medium" data-i18n="nav_home">Home</a>
+                <!-- Services Link Removed -->
+                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium" data-i18n="nav_portfolio">Portfolio</a>
+                
+                <div class="flex items-center space-x-4 py-2 border-t border-gray-100 mt-2 pt-4">
+                    <span class="text-gray-500 text-sm">Language:</span>
+                    <button id="mobile-btn-en" class="text-brand-blue font-bold text-sm">English</button>
+                    <span class="text-gray-300">|</span>
+                    <button id="mobile-btn-si" class="text-gray-500 hover:text-brand-blue text-sm">Sinhala</button>
+                </div>
+
+                <a href="contact.html" class="text-brand-accent font-bold" data-i18n="nav_contact">About & Contact</a>
             </div>
         </div>
     </nav>
@@ -121,18 +131,19 @@
     <section id="home" class="hero-bg h-screen min-h-[600px] flex items-center relative">
         <div class="container mx-auto px-6 relative z-10 text-white">
             <div class="max-w-3xl">
-                <div class="inline-block bg-brand-accent px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded-sm">
+                <!-- Added id/class for JS animation targeting if needed, but JS handles logic by selecting children -->
+                <div class="inline-block bg-brand-accent px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded-sm animate-ready" data-i18n="hero_tag">
                     Mould Manufacturing Specialist
                 </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-ready" data-i18n="hero_title">
                     Plastic, Rubber & Blow Moulds
                 </h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl">
+                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl animate-ready" data-i18n="hero_desc">
                     We specialize in CNC & Lathe works, delivering high-quality custom moulds for industrial and consumer applications.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="contact.html" class="px-8 py-4 btn-primary rounded text-center font-bold text-lg shadow-lg">Start Your Project</a>
-                    <a href="index.html#services" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded text-center font-bold text-lg hover:bg-white hover:text-brand-blue transition">Explore Services</a>
+                <div class="flex flex-col sm:flex-row gap-4 animate-ready">
+                    <a href="contact.html" class="px-8 py-4 btn-primary rounded text-center font-bold text-lg shadow-lg" data-i18n="btn_start">Start Your Project</a>
+                    <a href="index.html#services" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded text-center font-bold text-lg hover:bg-white hover:text-brand-blue transition" data-i18n="btn_explore">Explore Services</a>
                 </div>
             </div>
         </div>
@@ -146,9 +157,9 @@
     <section id="services" class="py-20 bg-brand-gray">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-brand-accent font-bold uppercase tracking-wider text-sm">Our Expertise</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mt-2 mb-4">Comprehensive Mould Categories</h2>
-                <p class="text-gray-600">We manufacture a wide range of moulds tailored to your specific production needs.</p>
+                <span class="text-brand-accent font-bold uppercase tracking-wider text-sm" data-i18n="services_tag">Our Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mt-2 mb-4 section-title" data-i18n="services_title">Comprehensive Mould Categories</h2>
+                <p class="text-gray-600" data-i18n="services_subtitle">We manufacture a wide range of moulds tailored to your specific production needs.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,17 +220,17 @@
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2">
-                     <span class="inline-block px-3 py-1 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-md">Featured Masterpiece</span>
+                     <span class="inline-block px-3 py-1 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-md" data-i18n="feat_badge">Featured Masterpiece</span>
                     <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mt-2 mb-6 leading-tight">
-                        <span class="text-brand-accent">25ml</span> Calin<br>Shampoo Bottle
+                        <span class="text-brand-accent">125ml</span> <span data-i18n="feat_title">Calin<br>Shampoo Bottle</span>
                     </h2>
-                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed" data-i18n="feat_desc">
                         Witness the intersection of design and durability. This precision-molded bottle showcases our capability to handle complex curves and fine details. Interact with the model to see the flawless finish we deliver for consumer products.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="gallery.html" class="px-8 py-3 btn-glow rounded-full font-bold text-lg text-center flex items-center justify-center gap-3">
-                            <span>Explore Full Portfolio</span>
+                            <span data-i18n="btn_full_portfolio">Explore Full Portfolio</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -231,7 +242,6 @@
                 </div>
                 
                 <div class="md:w-1/2 w-full h-[500px] bg-white rounded-2xl overflow-hidden border border-gray-200 relative shadow-2xl transform hover:scale-[1.02] transition duration-500">
-                    <!-- 3D Model Viewer Optimized for Mobile/PC/Github Pages -->
                     <model-viewer 
                         src="./Unnamed-_25ml_Calin_Shampoo_bottle.gltf" 
                         alt="3D model of Calin Shampoo Bottle" 
@@ -250,7 +260,6 @@
                         </div>
                     </model-viewer>
                     
-                    <!-- Badge -->
                     <div class="absolute top-4 right-4 bg-brand-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
                         Interactive 3D
                     </div>
@@ -265,27 +274,26 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div>
                     <div class="flex items-center space-x-2 text-white mb-4">
-                        <!-- Logo wrapper -->
                         <div class="h-10 w-auto overflow-hidden bg-white rounded p-1">
                              <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer_desc">
                         Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Quick Links</h4>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="quick_links">Quick Links</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html" class="hover:text-brand-accent transition">About & Contact</a></li>
-                        <li><a href="index.html#services" class="hover:text-brand-accent transition">Services</a></li>
-                        <li><a href="gallery.html" class="hover:text-brand-accent transition">Portfolio</a></li>
+                        <li><a href="contact.html" class="hover:text-brand-accent transition" data-i18n="nav_contact">About & Contact</a></li>
+                        <!-- Services Link Removed -->
+                        <li><a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block">Contact Info</h4>
+                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="contact_info">Contact Info</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
                         <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
@@ -295,7 +303,7 @@
             </div>
 
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2023 Perera Engineers. All rights reserved.</p>
+                <p>&copy; <span data-i18n="rights">2025 Perera Engineers. All rights reserved.</span></p>
             </div>
         </div>
     </footer>
