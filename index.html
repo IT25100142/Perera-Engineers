@@ -8,14 +8,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Model Viewer -->
+    <!-- Model Viewer Script -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
     
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 
     <script>
@@ -24,12 +21,15 @@
                 extend: {
                     colors: {
                         'brand-blue': '#0f3c66',
-                        'brand-dark': '#1a1a1a',
-                        'brand-gray': '#f4f6f8',
+                        'brand-dark': '#0a2540', /* Slightly darker for more pro feel */
+                        'brand-gray': '#f8fafc',
                         'brand-accent': '#ff6b00',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
                     }
                 }
             }
@@ -66,174 +66,179 @@
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen bg-white">
 
     <!-- Top Bar -->
-    <div class="bg-brand-dark text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
+    <div class="bg-brand-dark text-slate-300 text-xs py-3 hidden md:block border-b border-slate-800">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex space-x-6">
-                <span><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
-                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
+            <div class="flex space-x-8">
+                <span class="tracking-wide"><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
+                <span class="tracking-wide"><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
             </div>
             <div class="flex space-x-6">
-                <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
+                <a href="tel:+94777644464" class="hover:text-white transition duration-300"><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 777 644 464</a>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2 text-brand-blue">
-                    <div class="h-16 w-auto overflow-hidden">
-                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="h-12 w-auto overflow-hidden">
+                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-105 contrast-110 group-hover:scale-105 transition duration-300">
                     </div>
                 </a>
 
-                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-                    <a href="index.html" class="text-brand-accent" data-i18n="nav_home">Home</a>
-                    <a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a>
+                <div class="hidden md:flex items-center space-x-10 font-medium text-slate-600 text-sm tracking-wide">
+                    <a href="index.html" class="text-brand-blue uppercase text-xs font-bold" data-i18n="nav_home">Home</a>
+                    <a href="gallery.html" class="hover:text-brand-blue transition duration-300 uppercase text-xs font-bold" data-i18n="nav_portfolio">Portfolio</a>
                     
-                    <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
-                        <i class="fas fa-info-circle"></i> <span data-i18n="nav_contact">About & Contact</span>
+                    <a href="contact.html" class="px-6 py-2.5 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-blue-900 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-300 flex items-center gap-2">
+                        <span data-i18n="nav_contact">About & Contact</span>
                     </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-700 focus:outline-none hover:text-brand-blue transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="bg-white border-t md:hidden">
-            <div class="flex flex-col px-6 py-4 space-y-4">
-                <a href="index.html" class="text-brand-accent font-medium" data-i18n="nav_home">Home</a>
-                <a href="gallery.html" class="text-gray-700 hover:text-brand-accent font-medium" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="contact.html" class="text-brand-accent font-bold" data-i18n="nav_contact">About & Contact</a>
+        <div id="mobile-menu" class="bg-white border-t border-gray-100 md:hidden absolute w-full shadow-lg">
+            <div class="flex flex-col px-8 py-6 space-y-6 text-center">
+                <a href="index.html" class="text-brand-blue font-bold uppercase text-sm tracking-wide" data-i18n="nav_home">Home</a>
+                <a href="gallery.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_portfolio">Portfolio</a>
+                <a href="contact.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_contact">About & Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero-bg h-screen min-h-[600px] flex items-center relative">
+        <div class="absolute inset-0 bg-brand-dark/40 z-0"></div> <!-- Slightly cleaner overlay -->
         <div class="container mx-auto px-6 relative z-10 text-white">
-            <div class="max-w-3xl">
-                <div class="inline-block bg-brand-accent px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 rounded-sm animate-ready" data-i18n="hero_tag">
+            <div class="max-w-4xl">
+                <div class="inline-block bg-brand-accent/90 backdrop-blur px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-6 rounded-sm shadow-sm animate-ready border border-white/20" data-i18n="hero_tag">
                     Mould Manufacturing Specialist
                 </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-ready" data-i18n="hero_title">
-                    Plastic, Rubber & Blow Moulds
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8 animate-ready tracking-tight" data-i18n="hero_title">
+                    Precision <span class="text-brand-accent">Engineering</span><br>For Global Industries
                 </h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl animate-ready" data-i18n="hero_desc">
-                    We specialize in CNC & Lathe works, delivering high-quality custom moulds for industrial and consumer applications.
+                <p class="text-lg md:text-xl text-gray-100 mb-10 leading-relaxed max-w-2xl animate-ready font-light" data-i18n="hero_desc">
+                    Specializing in Plastic, Rubber & Blow Moulds. We deliver high-fidelity CNC & Lathe works for industrial and consumer applications with unmatched durability.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 animate-ready">
-                    <a href="contact.html" class="px-8 py-4 btn-primary rounded text-center font-bold text-lg shadow-lg" data-i18n="btn_start">Start Your Project</a>
-                    <a href="index.html#services" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded text-center font-bold text-lg hover:bg-white hover:text-brand-blue transition" data-i18n="btn_explore">Explore Services</a>
+                <div class="flex flex-col sm:flex-row gap-5 animate-ready">
+                    <a href="contact.html" class="px-8 py-4 bg-brand-accent text-white rounded font-bold text-sm uppercase tracking-wider shadow-lg hover:bg-orange-600 hover:shadow-xl transition transform hover:-translate-y-1 text-center" data-i18n="btn_start">Start Your Project</a>
+                    <a href="index.html#services" class="px-8 py-4 bg-transparent border border-white/30 backdrop-blur-sm text-white rounded font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-brand-blue transition text-center" data-i18n="btn_explore">Explore Services</a>
                 </div>
             </div>
         </div>
         
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
-            <a href="#services" class="text-white text-2xl"><i class="fas fa-chevron-down"></i></a>
+            <a href="#services" class="text-white/70 hover:text-white transition text-2xl"><i class="fas fa-chevron-down"></i></a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-brand-gray">
+    <section id="services" class="py-24 bg-brand-gray">
         <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-brand-accent font-bold uppercase tracking-wider text-sm" data-i18n="services_tag">Our Expertise</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mt-2 mb-4 section-title" data-i18n="services_title">Comprehensive Mould Categories</h2>
-                <p class="text-gray-600" data-i18n="services_subtitle">We manufacture a wide range of moulds tailored to your specific production needs.</p>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3 block" data-i18n="services_tag">Our Expertise</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6 tracking-tight" data-i18n="services_title">Comprehensive Mould Categories</h2>
+                <div class="w-20 h-1 bg-brand-accent mx-auto mb-6 rounded-full"></div>
+                <p class="text-slate-500 text-lg leading-relaxed font-light" data-i18n="services_subtitle">We manufacture a wide range of moulds tailored to your specific production needs, combining traditional craftsmanship with modern technology.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Cards -->
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-syringe text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-syringe text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Injection Mould</h3>
-                    <p class="text-gray-600 mb-4">High-precision moulds for mass production of complex plastic parts with tight tolerances.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">Injection Mould</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">High-precision moulds for mass production of complex plastic parts with tight tolerances.</p>
                 </div>
 
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-bottle-water text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-bottle-water text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Blow Mould</h3>
-                    <p class="text-gray-600 mb-4">Specialized tooling for manufacturing hollow plastic parts such as bottles and containers.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">Blow Mould</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Specialized tooling for manufacturing hollow plastic parts such as bottles and containers.</p>
                 </div>
 
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-shapes text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-shapes text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Die Casting Mould</h3>
-                    <p class="text-gray-600 mb-4">Robust moulds designed for forcing molten metal under high pressure into mold cavities.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">Die Casting Mould</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Robust moulds designed for forcing molten metal under high pressure into mold cavities.</p>
                 </div>
 
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-eraser text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-eraser text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Silicone / Rubber Mould</h3>
-                    <p class="text-gray-600 mb-4">Flexible and durable moulds for producing high-quality rubber and silicone components.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">Silicone / Rubber Mould</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Flexible and durable moulds for producing high-quality rubber and silicone components.</p>
                 </div>
 
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-box-open text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-box-open text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Thermoforming Mould</h3>
-                    <p class="text-gray-600 mb-4">Also known as Vacuum Moulds, ideal for packaging trays, blisters, and large plastic shells.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">Thermoforming Mould</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Also known as Vacuum Moulds, ideal for packaging trays, blisters, and large plastic shells.</p>
                 </div>
 
-                <div class="service-card bg-white p-8 rounded-lg border border-gray-100">
-                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue mb-6">
-                        <i class="fas fa-cogs text-2xl"></i>
+                <div class="service-card bg-white p-10 rounded-xl border border-slate-100 shadow-soft hover:shadow-xl transition duration-300 group">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition duration-300">
+                        <i class="fas fa-cogs text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">CNC & Lathe Works</h3>
-                    <p class="text-gray-600 mb-4">Expert CNC machining and lathe work for custom tooling parts, repairs, and modifications.</p>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4 group-hover:text-brand-blue transition">CNC & Lathe Works</h3>
+                    <p class="text-slate-500 leading-relaxed text-sm">Expert CNC machining and lathe work for custom tooling parts, repairs, and modifications.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 3D Model Section -->
-    <section id="interactive-model" class="py-24 model-showcase-bg">
+    <section id="interactive-model" class="py-24 model-showcase-bg bg-white relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-brand-gray/50 -skew-x-12 transform translate-x-20 z-0"></div>
+
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2">
-                     <span class="inline-block px-3 py-1 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider mb-4 shadow-md" data-i18n="feat_badge">Featured Masterpiece</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mt-2 mb-6 leading-tight">
-                        <span class="text-brand-accent">125ml</span> <span data-i18n="feat_title">Calin<br>Shampoo Bottle</span>
+                     <span class="inline-block px-3 py-1 bg-brand-blue text-white rounded-sm text-xs font-bold uppercase tracking-widest mb-6 shadow-md" data-i18n="feat_badge">Featured Masterpiece</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 leading-tight tracking-tight">
+                        <span class="text-brand-accent">Latest</span> <span data-i18n="feat_title">Electrical<br>Plug Top</span>
                     </h2>
-                    <p class="text-gray-600 mb-8 text-lg leading-relaxed" data-i18n="feat_desc">
-                        Witness the intersection of design and durability. This precision-molded bottle showcases our capability to handle complex curves and fine details. Interact with the model to see the flawless finish we deliver for consumer products.
+                    <p class="text-slate-500 mb-10 text-lg leading-relaxed font-light" data-i18n="feat_desc">
+                        Our newly manufactured electrical plug top showcases precision in mould making. Designed for safety and durability, this component highlights our capability in producing complex electrical fittings with exacting standards.
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="gallery.html" class="px-8 py-3 btn-glow rounded-full font-bold text-lg text-center flex items-center justify-center gap-3">
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="gallery.html" class="px-8 py-4 bg-brand-dark text-white rounded font-bold text-sm uppercase tracking-wider shadow-lg hover:bg-slate-800 transition transform hover:-translate-y-1 flex items-center justify-center gap-3">
                             <span data-i18n="btn_full_portfolio">Explore Full Portfolio</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
 
-                    <div class="mt-8 flex space-x-6 text-sm text-gray-500 border-t border-gray-300 pt-6">
+                    <div class="mt-10 flex space-x-8 text-xs font-medium text-slate-400 border-t border-slate-100 pt-8 uppercase tracking-wide">
                         <div class="flex items-center"><i class="fas fa-hand-pointer mr-2 text-brand-accent"></i>Drag to Rotate</div>
                         <div class="flex items-center"><i class="fas fa-search-plus mr-2 text-brand-accent"></i>Scroll to Zoom</div>
                     </div>
                 </div>
                 
-                <div class="md:w-1/2 w-full h-[500px] bg-white rounded-2xl overflow-hidden border border-gray-200 relative shadow-2xl transform hover:scale-[1.02] transition duration-500">
+                <div class="md:w-1/2 w-full h-[550px] bg-white rounded-xl overflow-hidden border border-slate-100 relative shadow-2xl transform hover:scale-[1.01] transition duration-700">
                     <model-viewer 
-                        src="./Unnamed-_25ml_Calin_Shampoo_bottle.gltf" 
-                        alt="3D model of Calin Shampoo Bottle" 
+                        src="./Plug%20top.gltf" 
+                        alt="3D model of Electrical Plug Top" 
                         auto-rotate 
                         camera-controls 
                         ar
@@ -249,7 +254,8 @@
                         </div>
                     </model-viewer>
                     
-                    <div class="absolute top-4 right-4 bg-brand-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                    <div class="absolute top-6 right-6 bg-white/90 backdrop-blur text-brand-dark text-xs font-bold px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
                         Interactive 3D
                     </div>
                 </div>
@@ -258,39 +264,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8">
+    <footer class="bg-brand-dark text-white pt-20 pb-10">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
-                    <div class="flex items-center space-x-2 text-white mb-4">
-                        <div class="h-10 w-auto overflow-hidden bg-white rounded p-1">
+                    <div class="flex items-center space-x-3 text-white mb-6">
+                        <!-- Logo wrapper -->
+                         <div class="h-12 w-auto overflow-hidden bg-white rounded p-1.5 shadow-md">
                              <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
                         </div>
+                        <span class="text-xl font-bold tracking-tight">Perera Engineers</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer_desc">
-                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works.
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light" data-i18n="footer_desc">
+                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works. Delivering precision and durability since our inception.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="quick_links">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html" class="hover:text-brand-accent transition" data-i18n="nav_contact">About & Contact</a></li>
-                        <li><a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a></li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="quick_links">Quick Links</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li><a href="contact.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_contact">About & Contact</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_portfolio">Portfolio</a></li>
+                        <li><a href="#services" class="hover:text-brand-accent transition duration-300">Services</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="contact_info">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
-                        <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
-                        <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="contact_info">Contact Info</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-phone w-6 text-brand-accent"></i>+94 769 945 363</li>
+                        <li class="flex items-center"><i class="fas fa-mobile-alt w-6 text-brand-accent"></i>+94 777 644 464</li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-6 text-brand-accent"></i>Pereraengineers@gmail.com</li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt w-6 text-brand-accent mt-1"></i><span>Nalluruwa, Panadura</span></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <div class="border-t border-gray-800 pt-8 text-center text-slate-500 text-sm font-light">
                 <p>&copy; <span data-i18n="rights">2025 Perera Engineers. All rights reserved.</span></p>
             </div>
         </div>
