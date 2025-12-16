@@ -7,7 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom Styles -->
@@ -19,145 +19,156 @@
                 extend: {
                     colors: {
                         'brand-blue': '#0f3c66',
-                        'brand-dark': '#1a1a1a',
-                        'brand-gray': '#f4f6f8',
+                        'brand-dark': '#0a2540',
+                        'brand-gray': '#f8fafc',
                         'brand-accent': '#ff6b00',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen bg-white">
 
     <!-- Top Bar -->
-    <div class="bg-brand-dark text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
+    <div class="bg-brand-dark text-slate-300 text-xs py-3 hidden md:block border-b border-slate-800">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex space-x-6">
-                <span><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
-                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
+            <div class="flex space-x-8">
+                <span class="tracking-wide"><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
+                <span class="tracking-wide"><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
             </div>
             <div class="flex space-x-6">
-                <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
+                <a href="tel:+94777644464" class="hover:text-white transition duration-300"><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 777 644 464</a>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2 text-brand-blue">
-                    <div class="h-16 w-auto overflow-hidden">
-                        <!-- Applied filters -->
-                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="h-12 w-auto overflow-hidden">
+                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-105 contrast-110 group-hover:scale-105 transition duration-300">
                     </div>
                 </a>
 
-                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-                    <a href="index.html" class="hover:text-brand-accent transition" data-i18n="nav_home">Home</a>
-                    <a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a>
+                <div class="hidden md:flex items-center space-x-10 font-medium text-slate-600 text-sm tracking-wide">
+                    <a href="index.html" class="hover:text-brand-blue transition duration-300 uppercase text-xs font-bold" data-i18n="nav_home">Home</a>
+                    <a href="gallery.html" class="hover:text-brand-blue transition duration-300 uppercase text-xs font-bold" data-i18n="nav_portfolio">Portfolio</a>
                     
-                    <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
-                        <i class="fas fa-info-circle"></i> <span data-i18n="nav_contact">About & Contact</span>
+                    <a href="contact.html" class="px-6 py-2.5 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-blue-900 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-300 flex items-center gap-2">
+                        <span data-i18n="nav_contact">About & Contact</span>
                     </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-700 focus:outline-none hover:text-brand-blue transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="bg-white border-t md:hidden">
-            <div class="flex flex-col px-6 py-4 space-y-4">
-                <a href="index.html" class="text-brand-accent font-medium" data-i18n="nav_home">Home</a>
-                <a href="gallery.html" class="text-brand-accent font-medium" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="contact.html" class="text-brand-accent font-bold" data-i18n="nav_contact">About & Contact</a>
+        <div id="mobile-menu" class="bg-white border-t border-gray-100 md:hidden absolute w-full shadow-lg">
+            <div class="flex flex-col px-8 py-6 space-y-6 text-center">
+                <a href="index.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_home">Home</a>
+                <a href="gallery.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_portfolio">Portfolio</a>
+                <a href="contact.html" class="text-brand-blue font-bold uppercase text-sm tracking-wide" data-i18n="nav_contact">About & Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- About Section (Moved from Index) -->
-    <section id="about" class="py-20 bg-white">
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1565439303660-318e655aa2c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Factory Floor" class="rounded-lg shadow-2xl w-full">
-                        <div class="absolute -bottom-6 -right-6 bg-brand-blue text-white p-8 rounded-lg shadow-xl hidden md:block">
-                            <p class="text-lg font-bold">CNC & Lathe</p>
-                            <p class="text-sm uppercase tracking-wider">Specialist</p>
-                        </div>
+            <div class="max-w-4xl mx-auto text-center md:text-left">
+                
+                <!-- Pure HTML/CSS Emblem -->
+                <div class="w-24 h-24 mx-auto md:mx-0 mb-8 relative flex items-center justify-center bg-white rounded-full border-4 border-brand-blue shadow-lg group cursor-default">
+                    <!-- Decorative Inner Ring -->
+                    <div class="absolute inset-1 border border-slate-200 rounded-full"></div>
+                    
+                    <!-- Icon -->
+                    <i class="fas fa-cogs text-4xl text-brand-accent group-hover:rotate-180 transition duration-1000 ease-in-out"></i>
+                    
+                    <!-- Optional: Badge Label (e.g., EST) -->
+                    <div class="absolute -bottom-2 bg-brand-blue text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm border-2 border-white">
+                        Est. 2025
                     </div>
                 </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-2">Perera Engineers</h2>
-                    <h3 class="text-xl text-gray-500 mb-6">Your Trusted Partner in Mould Manufacturing</h3>
-                    <div class="w-16 h-1 bg-brand-accent mb-8"></div>
-                    
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Perera Engineers is a premier manufacturer of Plastic Moulds, Rubber Moulds, and Blow Moulds. With specialized expertise in CNC and Lathe works, we provide durable and precise tooling solutions for a variety of industries.
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        Located in Panadura, Sri Lanka, we are committed to engineering excellence, offering complete support from design to final mould fabrication.
-                    </p>
 
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-brand-accent mr-3"></i>Plastic Moulds
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-brand-accent mr-3"></i>Rubber Moulds
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-brand-accent mr-3"></i>Blow Moulds
-                        </li>
-                        <li class="flex items-center text-gray-700">
-                            <i class="fas fa-check-circle text-brand-accent mr-3"></i>CNC & Lathe Works
-                        </li>
-                    </ul>
-                </div>
+                <span class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-2 block">Who We Are</span>
+                <h2 class="text-4xl font-extrabold text-brand-dark mb-4 tracking-tight">Perera Engineers</h2>
+                <h3 class="text-xl text-slate-500 mb-8 font-light">Your Trusted Partner in Mould Manufacturing</h3>
+                <div class="w-20 h-1 bg-brand-accent mb-10 rounded-full md:mx-0 mx-auto"></div>
+                
+                <p class="text-slate-600 mb-6 leading-relaxed text-lg font-light">
+                    Perera Engineers is a premier manufacturer of <strong class="text-brand-blue font-semibold">Plastic Moulds, Rubber Moulds, and Blow Moulds</strong>. With specialized expertise in CNC and Lathe works, we provide durable and precise tooling solutions tailored for a variety of demanding industries.
+                </p>
+                <p class="text-slate-600 mb-10 leading-relaxed font-light">
+                    Located in Panadura, Sri Lanka, we are committed to engineering excellence, offering complete support from initial design concepts to final high-fidelity mould fabrication.
+                </p>
+
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-left">
+                    <li class="flex items-center text-slate-700 font-medium justify-center md:justify-start">
+                        <i class="fas fa-check-circle text-brand-accent mr-3"></i>Plastic Moulds
+                    </li>
+                    <li class="flex items-center text-slate-700 font-medium justify-center md:justify-start">
+                        <i class="fas fa-check-circle text-brand-accent mr-3"></i>Rubber Moulds
+                    </li>
+                    <li class="flex items-center text-slate-700 font-medium justify-center md:justify-start">
+                        <i class="fas fa-check-circle text-brand-accent mr-3"></i>Blow Moulds
+                    </li>
+                    <li class="flex items-center text-slate-700 font-medium justify-center md:justify-start">
+                        <i class="fas fa-check-circle text-brand-accent mr-3"></i>CNC & Lathe Works
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Contact Details Section -->
-    <section id="contact" class="py-20 bg-brand-gray relative flex-grow">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden p-10 text-center">
-                <h3 class="text-3xl font-bold mb-6 text-brand-blue" data-i18n="contact_title">Contact Perera Engineers</h3>
-                <p class="text-gray-600 mb-10 max-w-2xl mx-auto" data-i18n="contact_intro">
-                    We are ready to assist you with your mould manufacturing needs. Visit us or contact us via phone.
+    <section id="contact" class="py-24 bg-brand-gray relative flex-grow">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="bg-white rounded-2xl shadow-soft overflow-hidden p-12 text-center border border-slate-100">
+                <span class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3 block">Get in Touch</span>
+                <h3 class="text-4xl font-extrabold mb-6 text-brand-dark tracking-tight" data-i18n="contact_title">Contact Perera Engineers</h3>
+                <p class="text-slate-500 mb-12 max-w-2xl mx-auto text-lg font-light" data-i18n="contact_intro">
+                    We are ready to assist you with your mould manufacturing needs. Visit our facility or contact us directly via phone or email.
                 </p>
                 
                 <!-- 2 Column Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-3xl mx-auto">
-                    <div class="flex flex-col items-center p-6 bg-brand-gray rounded-lg">
-                        <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white mb-4 text-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+                    <div class="flex flex-col items-center p-8 bg-brand-gray/50 rounded-xl hover:bg-brand-gray transition duration-300 border border-transparent hover:border-slate-200">
+                        <div class="w-14 h-14 bg-brand-blue rounded-full flex items-center justify-center text-white mb-6 text-xl shadow-lg">
                              <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h4 class="font-bold text-lg mb-2" data-i18n="addr_title">Address</h4>
-                        <p class="text-sm text-gray-600" data-i18n="addr_text">No: 428/6, Circular Road,<br>Nalluruwa, Panadura, Sri Lanka</p>
+                        <h4 class="font-bold text-xl mb-3 text-brand-dark" data-i18n="addr_title">Address</h4>
+                        <p class="text-slate-600 leading-relaxed" data-i18n="addr_text">No: 428/6, Circular Road,<br>Nalluruwa, Panadura, Sri Lanka</p>
                     </div>
 
-                    <div class="flex flex-col items-center p-6 bg-brand-gray rounded-lg">
-                        <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white mb-4 text-xl">
+                    <div class="flex flex-col items-center p-8 bg-brand-gray/50 rounded-xl hover:bg-brand-gray transition duration-300 border border-transparent hover:border-slate-200">
+                        <div class="w-14 h-14 bg-brand-blue rounded-full flex items-center justify-center text-white mb-6 text-xl shadow-lg">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <h4 class="font-bold text-lg mb-2" data-i18n="phone_title">Contact</h4>
-                        <p class="text-sm text-gray-600">Office: +94 382248333</p>
-                        <p class="text-sm text-gray-600 mb-4">Mobile: +94 777 644464</p>
-                        <a href="tel:+94777644464" class="px-6 py-2 bg-brand-blue text-white rounded-full font-semibold hover:bg-blue-900 transition shadow-md w-full" data-i18n="btn_call">Call Now</a>
+                        <h4 class="font-bold text-xl mb-3 text-brand-dark" data-i18n="phone_title">Contact</h4>
+                        <div class="space-y-1 mb-6">
+                            <p class="text-slate-600">Mobile: <span class="font-semibold text-brand-dark">+94 769 945 363</span></p>
+                            <p class="text-slate-600">Mobile: <span class="font-semibold text-brand-dark">+94 777 644 464</span></p>
+                            <p class="text-slate-600">Email: <span class="font-semibold text-brand-dark">Pereraengineers@gmail.com</span></p>
+                        </div>
+                        <a href="tel:+94777644464" class="px-8 py-3 bg-brand-accent text-white rounded-full text-sm font-bold uppercase tracking-wider hover:bg-orange-600 transition shadow-md hover:shadow-lg w-full max-w-xs" data-i18n="btn_call">Call Now</a>
                     </div>
                 </div>
 
                  <!-- Google Map Embed -->
-                <div class="w-full h-80 bg-gray-200 rounded-lg overflow-hidden shadow-inner border border-gray-300">
+                <div class="w-full h-96 bg-gray-200 rounded-xl overflow-hidden shadow-inner border border-gray-300">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.9917595590666!2d79.91180795788875!3d6.695981095223888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2459503e9f83f%3A0xa42d3e7c1aa7517f!2sPerera%20Engineers!5e0!3m2!1sen!2slk!4v1764406127534!5m2!1sen!2slk"
                         width="100%" 
@@ -174,45 +185,137 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8">
+    <footer class="bg-brand-dark text-white pt-20 pb-10 mt-auto">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
-                    <div class="flex items-center space-x-2 text-white mb-4">
+                    <div class="flex items-center space-x-3 text-white mb-6">
                         <!-- Logo wrapper -->
-                         <div class="h-10 w-auto overflow-hidden bg-white rounded p-1">
+                         <div class="h-12 w-auto overflow-hidden bg-white rounded p-1.5 shadow-md">
                              <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
                         </div>
+                        <span class="text-xl font-bold tracking-tight">Perera Engineers</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer_desc">
-                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works.
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light" data-i18n="footer_desc">
+                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works. Delivering precision and durability since our inception.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="quick_links">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html" class="hover:text-brand-accent transition" data-i18n="nav_contact">About & Contact</a></li>
-                        <li><a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a></li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="quick_links">Quick Links</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li><a href="contact.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_contact">About & Contact</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_portfolio">Portfolio</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="contact_info">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
-                        <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
-                        <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="contact_info">Contact Info</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-phone w-6 text-brand-accent"></i>+94 769 945 363</li>
+                        <li class="flex items-center"><i class="fas fa-mobile-alt w-6 text-brand-accent"></i>+94 777 644 464</li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-6 text-brand-accent"></i>Pereraengineers@gmail.com</li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt w-6 text-brand-accent mt-1"></i><span>Nalluruwa, Panadura</span></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <div class="border-t border-gray-800 pt-8 text-center text-slate-500 text-sm font-light">
                 <p>&copy; <span data-i18n="rights">2025 Perera Engineers. All rights reserved.</span></p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Embedded Script from script.js -->
+    <script>
+        // Initialization Function
+        function init() {
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if (btn && menu) {
+                btn.addEventListener('click', () => { 
+                    // Toggle visibility classes
+                    if (menu.style.maxHeight && menu.style.maxHeight !== "0px") {
+                        menu.style.maxHeight = "0px";
+                        menu.style.opacity = "0";
+                    } else {
+                        menu.style.maxHeight = "400px"; // Approximate max height
+                        menu.style.opacity = "1";
+                    }
+                });
+                
+                // Close menu when a link is clicked
+                document.querySelectorAll('#mobile-menu a').forEach(link => {
+                    link.addEventListener('click', () => { 
+                        menu.style.maxHeight = "0px";
+                        menu.style.opacity = "0";
+                    });
+                });
+            }
+
+            // --- ENHANCED ANIMATION SYSTEM ---
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        
+                        el.classList.remove('opacity-0', 'translate-y-8', '-translate-x-8', 'translate-x-8', 'scale-95');
+                        el.classList.add('opacity-100', 'translate-y-0', 'translate-x-0', 'scale-100');
+                        
+                        observer.unobserve(el);
+                    }
+                });
+            }, observerOptions);
+
+            // Select elements to animate
+            const fadeUpElements = document.querySelectorAll(
+                '.service-card, ' +
+                '#gallery .group, ' +
+                '#contact .bg-white, ' +
+                '#about .max-w-4xl, ' + // Text content
+                '.section-title, ' + 
+                '.hero-bg p, .hero-bg .flex, .hero-bg .inline-block'
+            );
+            
+            const fadeLeftElements = document.querySelectorAll(
+                '.model-showcase-bg .md\\:w-1\\/2:first-child'
+            );
+
+            const fadeRightElements = document.querySelectorAll(
+                '.model-showcase-bg .md\\:w-1\\/2:last-child'
+            );
+
+            const applyAnimation = (elements, transformClasses) => {
+                if (!elements) return;
+                elements.forEach((el, index) => {
+                    el.classList.add('transition-all', 'duration-1000', 'ease-out', 'opacity-0', 'will-change-transform', ...transformClasses);
+                    
+                    if (el.classList.contains('service-card') || el.classList.contains('group')) {
+                        const delay = (index % 3) * 150;
+                        el.style.transitionDelay = `${delay}ms`;
+                    }
+                    
+                    observer.observe(el);
+                });
+            };
+
+            applyAnimation(fadeUpElements, ['translate-y-12']); 
+            applyAnimation(fadeLeftElements, ['-translate-x-12']); 
+            applyAnimation(fadeRightElements, ['translate-x-12']); 
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
 </body>
 </html>
