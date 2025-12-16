@@ -12,7 +12,7 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom Styles -->
@@ -24,12 +24,15 @@
                 extend: {
                     colors: {
                         'brand-blue': '#0f3c66',
-                        'brand-dark': '#1a1a1a',
-                        'brand-gray': '#f4f6f8',
+                        'brand-dark': '#0a2540', /* Slightly darker for more pro feel */
+                        'brand-gray': '#f8fafc',
                         'brand-accent': '#ff6b00',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', /* Softer shadow */
                     }
                 }
             }
@@ -39,8 +42,8 @@
         .gallery-model-container {
             width: 100%;
             height: 400px; 
-            background: radial-gradient(circle at center, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 0.5rem;
+            background: radial-gradient(circle at center, #f1f5f9 0%, #e2e8f0 100%); /* Subtler gradient */
+            border-radius: 0.75rem; /* Slightly more rounded */
             overflow: hidden;
             position: relative;
         }
@@ -79,271 +82,611 @@
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased flex flex-col min-h-screen bg-white">
 
     <!-- Top Bar -->
-    <div class="bg-brand-dark text-gray-300 text-xs py-2 hidden md:block border-b border-gray-700">
+    <div class="bg-brand-dark text-slate-300 text-xs py-3 hidden md:block border-b border-slate-800">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex space-x-6">
-                <span><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
-                <span><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
+            <div class="flex space-x-8">
+                <span class="tracking-wide"><i class="fas fa-certificate text-brand-accent mr-2"></i><span data-i18n="top_specialist">Specialist of CNC & Lathe Works</span></span>
+                <span class="tracking-wide"><i class="fas fa-map-marker-alt text-brand-accent mr-2"></i><span data-i18n="top_location">Panadura, Sri Lanka</span></span>
             </div>
             <div class="flex space-x-6">
-                <a href="tel:+94777644464" class="hover:text-white transition"><i class="fas fa-phone mr-2"></i>+94 777 644464</a>
+                <a href="tel:+94777644464" class="hover:text-white transition duration-300"><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 777 644 464</a>
             </div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <a href="index.html" class="flex items-center space-x-2 text-brand-blue">
-                    <div class="h-16 w-auto overflow-hidden">
-                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                <a href="index.html" class="flex items-center space-x-3 group">
+                    <div class="h-12 w-auto overflow-hidden">
+                        <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-105 contrast-110 group-hover:scale-105 transition duration-300">
                     </div>
                 </a>
 
-                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
-                    <a href="index.html" class="hover:text-brand-accent transition" data-i18n="nav_home">Home</a>
-                    <a href="gallery.html" class="text-brand-accent font-bold" data-i18n="nav_portfolio">Portfolio</a>
+                <div class="hidden md:flex items-center space-x-10 font-medium text-slate-600 text-sm tracking-wide">
+                    <a href="index.html" class="hover:text-brand-blue transition duration-300 uppercase text-xs font-bold" data-i18n="nav_home">Home</a>
+                    <a href="gallery.html" class="text-brand-accent uppercase text-xs font-bold" data-i18n="nav_portfolio">Portfolio</a>
                     
-                    <a href="contact.html" class="px-6 py-2 btn-creative rounded-full font-bold text-white flex items-center gap-2">
-                        <i class="fas fa-info-circle"></i> <span data-i18n="nav_contact">About & Contact</span>
+                    <a href="contact.html" class="px-6 py-2.5 bg-brand-blue text-white rounded-full text-xs font-bold uppercase tracking-wider hover:bg-blue-900 transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5 duration-300 flex items-center gap-2">
+                        <span data-i18n="nav_contact">About & Contact</span>
                     </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-700 focus:outline-none hover:text-brand-blue transition">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobile-menu" class="bg-white border-t md:hidden">
-            <div class="flex flex-col px-6 py-4 space-y-4">
-                <a href="index.html" class="text-brand-accent font-medium" data-i18n="nav_home">Home</a>
-                <a href="gallery.html" class="text-brand-accent font-medium" data-i18n="nav_portfolio">Portfolio</a>
-                <a href="contact.html" class="text-brand-accent font-bold" data-i18n="nav_contact">About & Contact</a>
+        <div id="mobile-menu" class="bg-white border-t border-gray-100 md:hidden absolute w-full shadow-lg">
+            <div class="flex flex-col px-8 py-6 space-y-6 text-center">
+                <a href="index.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_home">Home</a>
+                <a href="gallery.html" class="text-brand-accent font-bold uppercase text-sm tracking-wide" data-i18n="nav_portfolio">Portfolio</a>
+                <a href="contact.html" class="text-slate-600 font-medium hover:text-brand-blue uppercase text-sm tracking-wide" data-i18n="nav_contact">About & Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-white flex-grow">
+    <section id="gallery" class="py-24 bg-white flex-grow">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-blue mb-4 section-title" data-i18n="gallery_title">Interactive Product Showcase</h1>
-                <div class="w-24 h-1 bg-brand-accent mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg" data-i18n="gallery_desc">
-                    Explore our precision engineering in 3D. Interact with the models below to see the quality and detail of our work.
+            <div class="text-center mb-20">
+                <span class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-3 block">Our Work</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-6 tracking-tight" data-i18n="gallery_title">Interactive Showcase</h1>
+                <div class="w-20 h-1 bg-brand-accent mx-auto mb-8 rounded-full"></div>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-light" data-i18n="gallery_desc">
+                    Explore our precision engineering in 3D. Interact with the models below to witness the quality and detail of our manufacturing capabilities.
                 </p>
             </div>
 
-            <!-- Changed grid to 2 columns on medium screens and above -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                
-                <!-- Model 1 -->
-                <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./Bottle_Cap_3__2_4_38____Copy.gltf" 
-                            alt="3D model of a Bottle Cap" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+            <!-- Category: Blow Moulds -->
+            <div class="mb-24">
+                <h2 class="text-2xl font-bold text-brand-dark mb-8 border-l-4 border-brand-accent pl-4">Blow Moulds</h2>
+                <!-- UPDATED GRID: grid-cols-1 md:grid-cols-2 (removed lg:grid-cols-3) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                    
+                     <!-- Model 3 (Standard Industrial Bottle) -->
+                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Bottle.gltf" 
+                                alt="3D model of Standard Industrial Bottle" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Standard Industrial Bottle</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Versatile plastic bottle design suitable for various liquid applications, showcasing smooth surface finishing.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Precision Bottle Cap</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            High-precision mould with intricate threading. Ideal for leak-proof sealing in beverage and cosmetic products.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Model 2 -->
-                <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./Bucket%20(2.19.30).gltf" 
-                            alt="3D model of a Bucket" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+                    <!-- Model 4 (Advanced Container Variant) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Bottle3.gltf" 
+                                alt="3D model of Advanced Container Variant" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Advanced Container Variant</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Optimized bottle geometry for improved structural integrity and material efficiency in mass production.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Heavy-Duty Industrial Bucket</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Robust container with reinforced rims for heavy loads. Suitable for construction and chemical storage.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Model 3 -->
-                <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./BUCKET_2_19_5.gltf" 
-                            alt="3D model of a Bucket Variant" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+                    <!-- Model 5 (Custom Blow-Moulded Bottle) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Custom%20Blow-Moulded%20Bottle.gltf" 
+                                alt="3D model of Custom Blow-Moulded Bottle" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Custom Blow-Moulded Bottle</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Specialized blow-moulded design tailored for specific branding and ergonomic requirements.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Versatile Storage Container</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Optimized for efficient material usage and structural integrity. Perfect for household and light industrial storage.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Model 4 -->
-                <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./FAN_Base_2_19_8_2.gltf" 
-                            alt="3D model of a Fan Base" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+                    <!-- Model 11 (Source Bottle Design) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Source%20Bottle.gltf" 
+                                alt="3D model of Source Bottle Design" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Source Bottle Design</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Premium bottle prototype designed for high-end consumer liquids, featuring unique contouring.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Electric Fan Base Unit</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Complex component with internal reinforcement ribs for stability. Highlights expertise in consumer electronics moulds.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Model 5 -->
-                <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./HANGER_2_19_6.gltf" 
-                            alt="3D model of a Hanger" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+                    <!-- Model 18 (Calin Shampoo Bottle) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Unnamed-_25ml_Calin_Shampoo_bottle.gltf" 
+                                alt="3D model of Shampoo Bottle" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Calin Shampoo Bottle</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Aesthetic packaging with smooth curvature and premium finish. Demonstrates high-quality surface capabilities.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Ergonomic Retail Hanger</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Streamlined, lightweight design optimized for high-volume production. Ideal for retail and home organization.
-                        </p>
-                    </div>
                 </div>
+            </div>
 
-                 <!-- Model 6 -->
-                 <div class="group bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-300">
-                    <div class="gallery-model-container">
-                        <model-viewer 
-                            src="./Unnamed-_25ml_Calin_Shampoo_bottle.gltf" 
-                            alt="3D model of Shampoo Bottle" 
-                            auto-rotate 
-                            camera-controls 
-                            shadow-intensity="1"
-                            exposure="1"
-                            environment-image="neutral">
-                            <div class="progress-bar hide" slot="progress-bar">
-                                <div class="update-bar"></div>
+            <!-- Category: Injection Moulds -->
+            <div>
+                <h2 class="text-2xl font-bold text-brand-dark mb-8 border-l-4 border-brand-accent pl-4">Injection Moulds</h2>
+                <!-- UPDATED GRID: grid-cols-1 md:grid-cols-2 (removed lg:grid-cols-3) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                    
+                    <!-- Model 1 (Precision Internal Gear) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="Precision Internal Gear.gltf" 
+                                alt="3D model of Precision Internal Gear" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
                             </div>
-                        </model-viewer>
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-sm">
-                            <i class="fas fa-cube text-brand-accent"></i>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Precision Internal Gear</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                High-tolerance ring gear featuring accurate internal teeth and a rigid mounting flange. Critical for smooth torque transmission.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-brand-blue mb-2">Calin Shampoo Bottle</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">
-                            Aesthetic packaging with smooth curvature and premium finish. Demonstrates high-quality surface capabilities.
-                        </p>
-                    </div>
-                </div>
 
+                    <!-- Model 2 (Precision Bottle Cap) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Bottle_Cap_3__2_4_38____Copy.gltf" 
+                                alt="3D model of a Bottle Cap" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Precision Bottle Cap</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                High-precision mould with intricate threading. Ideal for leak-proof sealing in beverage and cosmetic products.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 6 (Flip-Top Dispensing Cap) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Flip-Top%20Dispensing%20Cap.gltf" 
+                                alt="3D model of Flip-Top Dispensing Cap" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Flip-Top Dispensing Cap</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Convenient dispensing solution with a durable hinge mechanism for personal care products.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 7 (Reinforced Garment Hanger) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Hanger2.gltf" 
+                                alt="3D model of Reinforced Garment Hanger" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Reinforced Garment Hanger</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Heavy-duty plastic hanger designed for retail display and long-term durability with ergonomic features.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 8 (Multi-Socket Adapter Housing) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Multiplug.gltf" 
+                                alt="3D model of Multi-Socket Adapter Housing" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Multi-Socket Adapter Housing</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Precision-moulded casing for electrical multi-plugs, ensuring safety, durability, and perfect fitment.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 9 (Electrical Plug Top) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Plug%20top.gltf" 
+                                alt="3D model of Electrical Plug Top" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Electrical Plug Top</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Robust plug top enclosure designed for standard electrical safety compliance and ease of assembly.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 10 (Ergonomic Shower Head) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Shower%20Head.gltf" 
+                                alt="3D model of Ergonomic Shower Head" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Ergonomic Shower Head</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Sleek bathroom fixture component with optimized water flow channels and a modern aesthetic.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 12 (Sunbox Enclosure) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Sunbox.gltf" 
+                                alt="3D model of Sunbox Enclosure" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Sunbox Enclosure</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Weather-resistant protective housing for outdoor or industrial electronics, ensuring component safety.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 13 (Intricate Toy Component) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Toy.gltf" 
+                                alt="3D model of Intricate Toy Component" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Intricate Toy Component</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Detailed plastic component for consumer toys, showcasing capabilities in manufacturing complex, small-scale parts.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 14 (Heavy-Duty Industrial Bucket) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./Bucket%20(2.19.30).gltf" 
+                                alt="3D model of a Bucket" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Heavy-Duty Industrial Bucket</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Robust container with reinforced rims for heavy loads. Suitable for construction and chemical storage.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 15 (Versatile Storage Container) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./BUCKET_2_19_5.gltf" 
+                                alt="3D model of a Bucket Variant" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Versatile Storage Container</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Optimized for efficient material usage and structural integrity. Perfect for household and light industrial storage.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 16 (Electric Fan Base Unit) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./FAN_Base_2_19_8_2.gltf" 
+                                alt="3D model of a Fan Base" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Electric Fan Base Unit</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Complex component with internal reinforcement ribs for stability. Highlights expertise in consumer electronics moulds.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Model 17 (Ergonomic Retail Hanger) -->
+                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
+                        <div class="gallery-model-container">
+                            <model-viewer 
+                                src="./HANGER_2_19_6.gltf" 
+                                alt="3D model of a Hanger" 
+                                auto-rotate 
+                                camera-controls 
+                                shadow-intensity="1"
+                                exposure="1.2"
+                                environment-image="neutral">
+                                <div class="progress-bar hide" slot="progress-bar">
+                                    <div class="update-bar"></div>
+                                </div>
+                            </model-viewer>
+                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Ergonomic Retail Hanger (Standard)</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Streamlined, lightweight design optimized for high-volume production. Ideal for retail and home organization.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-dark text-white pt-16 pb-8">
+    <footer class="bg-brand-dark text-white pt-20 pb-10 mt-auto">
         <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
-                    <div class="flex items-center space-x-2 text-white mb-4">
+                    <div class="flex items-center space-x-3 text-white mb-6">
                         <!-- Logo wrapper -->
-                         <div class="h-10 w-auto overflow-hidden bg-white rounded p-1">
+                         <div class="h-12 w-auto overflow-hidden bg-white rounded p-1.5 shadow-md">
                              <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
                         </div>
+                        <span class="text-xl font-bold tracking-tight">Perera Engineers</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4" data-i18n="footer_desc">
-                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works.
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light" data-i18n="footer_desc">
+                        Manufactures of Plastic Mould, Rubber Mould, Blow Mould & Specialist of CNC & Lathe Works. Delivering precision and durability since our inception.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="quick_links">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="contact.html" class="hover:text-brand-accent transition" data-i18n="nav_contact">About & Contact</a></li>
-                        <li><a href="gallery.html" class="hover:text-brand-accent transition" data-i18n="nav_portfolio">Portfolio</a></li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="quick_links">Quick Links</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li><a href="contact.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_contact">About & Contact</a></li>
+                        <li><a href="gallery.html" class="hover:text-brand-accent transition duration-300" data-i18n="nav_portfolio">Portfolio</a></li>
+                        <li><a href="index.html#services" class="hover:text-brand-accent transition duration-300">Services</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-lg font-bold mb-4 border-b border-gray-700 pb-2 inline-block" data-i18n="contact_info">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-phone mr-2 text-brand-accent"></i>+94 382248333</li>
-                        <li><i class="fas fa-mobile-alt mr-2 text-brand-accent"></i>+94 777 644464</li>
-                        <li><i class="fas fa-map-marker-alt mr-2 text-brand-accent"></i>Nalluruwa, Panadura</li>
+                    <h4 class="text-lg font-bold mb-6 border-b border-gray-700 pb-2 inline-block text-white" data-i18n="contact_info">Contact Info</h4>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-center"><i class="fas fa-phone w-6 text-brand-accent"></i>+94 769 945 363</li>
+                        <li class="flex items-center"><i class="fas fa-mobile-alt w-6 text-brand-accent"></i>+94 777 644 464</li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-6 text-brand-accent"></i>Pereraengineers@gmail.com</li>
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt w-6 text-brand-accent mt-1"></i><span>Nalluruwa, Panadura</span></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <div class="border-t border-gray-800 pt-8 text-center text-slate-500 text-sm font-light">
                 <p>&copy; <span data-i18n="rights">2025 Perera Engineers. All rights reserved.</span></p>
             </div>
         </div>
