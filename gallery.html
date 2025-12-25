@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Perera Engineers</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Model Viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
 
     <script>
@@ -84,7 +80,6 @@
 </head>
 <body class="text-slate-800 antialiased flex flex-col min-h-screen bg-white">
 
-    <!-- Top Bar -->
     <div class="bg-brand-dark text-slate-300 text-xs py-3 hidden md:block border-b border-slate-800">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex space-x-8">
@@ -97,11 +92,9 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
                 <a href="index.html" class="flex items-center space-x-3 group">
                     <div class="h-12 w-auto overflow-hidden">
                         <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-105 contrast-110 group-hover:scale-105 transition duration-300">
@@ -132,7 +125,6 @@
         </div>
     </nav>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="py-24 bg-white flex-grow">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20">
@@ -144,13 +136,10 @@
                 </p>
             </div>
 
-            <!-- Category: Blow Moulds -->
             <div class="mb-24">
                 <h2 class="text-2xl font-bold text-brand-dark mb-8 border-l-4 border-brand-accent pl-4">Blow Moulds</h2>
-                <!-- UPDATED GRID: grid-cols-1 md:grid-cols-2 (removed lg:grid-cols-3) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                     
-                     <!-- Model 3 (Standard Industrial Bottle) -->
                      <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -177,7 +166,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 4 (Advanced Container Variant) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -204,7 +192,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 5 (Custom Blow-Moulded Bottle) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -231,7 +218,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 11 (Source Bottle Design) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -258,7 +244,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 18 (Calin Shampoo Bottle) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -287,13 +272,10 @@
                 </div>
             </div>
 
-            <!-- Category: Injection Moulds -->
             <div>
                 <h2 class="text-2xl font-bold text-brand-dark mb-8 border-l-4 border-brand-accent pl-4">Injection Moulds</h2>
-                <!-- UPDATED GRID: grid-cols-1 md:grid-cols-2 (removed lg:grid-cols-3) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                     
-                    <!-- Model 1 (Precision Internal Gear) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -320,34 +302,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 2 (Precision Bottle Cap) -->
-                    <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
-                        <div class="gallery-model-container">
-                            <model-viewer 
-                                src="./Bottle_Cap_3__2_4_38____Copy.gltf" 
-                                alt="3D model of a Bottle Cap" 
-                                auto-rotate 
-                                camera-controls 
-                                shadow-intensity="1"
-                                exposure="1.2"
-                                environment-image="neutral">
-                                <div class="progress-bar hide" slot="progress-bar">
-                                    <div class="update-bar"></div>
-                                </div>
-                            </model-viewer>
-                            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-sm text-brand-blue transition transform group-hover:scale-110">
-                                <i class="fas fa-cube"></i>
-                            </div>
-                        </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold text-brand-dark mb-3">Precision Bottle Cap</h3>
-                            <p class="text-slate-500 text-sm leading-relaxed">
-                                High-precision mould with intricate threading. Ideal for leak-proof sealing in beverage and cosmetic products.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Model 6 (Flip-Top Dispensing Cap) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -374,7 +328,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 7 (Reinforced Garment Hanger) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -401,7 +354,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 8 (Multi-Socket Adapter Housing) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -428,7 +380,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 9 (Electrical Plug Top) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -455,7 +406,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 10 (Ergonomic Shower Head) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -482,7 +432,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 12 (Sunbox Enclosure) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -509,7 +458,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 13 (Intricate Toy Component) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -536,7 +484,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 14 (Heavy-Duty Industrial Bucket) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -563,7 +510,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 15 (Versatile Storage Container) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -590,7 +536,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 16 (Electric Fan Base Unit) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -617,7 +562,6 @@
                         </div>
                     </div>
 
-                    <!-- Model 17 (Ergonomic Retail Hanger) -->
                     <div class="group bg-white rounded-xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition duration-500 hover:-translate-y-1">
                         <div class="gallery-model-container">
                             <model-viewer 
@@ -649,15 +593,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-brand-dark text-white pt-20 pb-10 mt-auto">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
                     <div class="flex items-center space-x-3 text-white mb-6">
-                        <!-- Logo wrapper -->
-                         <div class="h-12 w-auto overflow-hidden bg-white rounded p-1.5 shadow-md">
-                             <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-125">
+                        <div class="h-12 w-auto overflow-hidden bg-white rounded p-1.5 shadow-md">
+                             <img src="logo.jpg" alt="Perera Engineers Logo" class="h-full object-contain mix-blend-multiply brightness-110 contrast-110">
                         </div>
                         <span class="text-xl font-bold tracking-tight">Perera Engineers</span>
                     </div>
